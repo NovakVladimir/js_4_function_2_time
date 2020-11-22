@@ -32,8 +32,6 @@ function getInput(idInput) {
     return inputValue_1;
 }
 
-
-
 /**
  * Seventh task
  */
@@ -70,7 +68,51 @@ function showTime(hours, minutes, seconds) {
     deleteOutput("container");
     insertOutputTrue(`${checkFormatTime(hours, 24, "hours")}:${checkFormatTime(minutes, 60, "minutes")}:${checkFormatTime(seconds, 60, "seconds")}`);
 }
- 
+
+/**
+ * Eighth task
+ */
+function toSeconds(hours, minutes, seconds) {
+    if((hours === '') || (hours ==="00")) {
+        hours = 0;
+    }
+    if((hours < 0) || (hours !== Math.floor(hours))) {
+        deleteOutput("container");
+        return insertOutputFalse(`Please,  use only positive numbers without fractions to enter hours`);
+    }
+
+    if((minutes === '') || (minutes === "00")) {
+        minutes = 0;
+    } else if (checkFormatTime(minutes, 60, "minutes") < 0) { return; }
+
+    if((seconds === '') || (seconds === "00")) {
+        seconds = 0;
+    } else if (checkFormatTime(seconds, 60, "seconds") < 0) { return; }
+
+    deleteOutput("container");
+    let result = hours * 60 * 60 + minutes * 60 + seconds;
+    insertOutputTrue(`It is ${result} seconds`);
+}
+
+/**
+ * Ninth task
+ */
+function changeFormatOfTime_00(unitTime) {
+    if(unitTime <= 9) {unitTime = "0" + unitTime;}
+    return unitTime;
+}
+
+function toHours(seconds) {
+    if((seconds < 0) || (seconds !== Math.floor(seconds))) {
+        deleteOutput("container");
+        return insertOutputFalse(`Please,  use only positive numbers without fractions to enter seconds`);
+    }
+    let hours = Math.floor(seconds / 3600);
+    let minutes = Math.floor((seconds - hours * 3600) / 60);
+    let finishSeconds = seconds - hours * 3600 - minutes * 60;
+    deleteOutput("container");
+    insertOutputTrue(`${changeFormatOfTime_00(hours)}:${changeFormatOfTime_00(minutes)}:${changeFormatOfTime_00(finishSeconds)}`);
+}
 
 
 
