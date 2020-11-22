@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Time</title>
+</head>
+<body>
+    <section class="conditions">
+
+        <p>7. Написать функцию, которая принимает время (часы, минуты, секунды) и выводит его на экран в формате «чч:мм:сс».Если при вызове функции минуты и/или секунды не были переданы, то выводить их как 00.</p>
+        <span>Hours</span><input type="number" id="number_7_1">
+        <span>Minutes</span><input type="number" id="number_7_2">
+        <span>Seconds</span><input type="number" id="number_7_3">
+        <input type="button" value="Enter" onclick="showTime(getInput('number_7_1'), getInput('number_7_2'), getInput('number_7_3'))">
+
+
+    </section>
+
+    <section class="output">
+        <div id = "container">
+
+        </div>
+    </section>
+    <script src="js/main.js">
+
+    </script>
+    
+</body>
+</html>
