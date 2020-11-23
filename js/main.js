@@ -115,18 +115,38 @@ function toHours(seconds) {
     insertOutputTrue(`${changeFormatOfTime_00(hours)}:${changeFormatOfTime_00(minutes)}:${changeFormatOfTime_00(finishSeconds)}`);
 }
 
+function toYears(miliseconds) {
+    // if((seconds < 0) || (seconds !== Math.floor(seconds))) {
+    //     deleteOutput("container");
+    //     return insertOutputFalse(`Please,  use only positive numbers without fractions to enter seconds`);
+    // }
+    let years = Math.floor(miliseconds / 31556926000);
+    let monthes = Math.floor((miliseconds - years * 31556926000) / 2592000000);
+    let days = Math.floor((miliseconds - years * 31556926000 - monthes * 2592000000) / 86400000);
+    let hours = Math.floor((miliseconds - years * 31556926000 - monthes * 2592000000 - days * 86400000) / 3600000);
+    let minutes = Math.floor((miliseconds - years * 31556926000 - monthes * 2592000000 - days * 86400000 - hours * 3600000) / 60000);
+    let finishSeconds = Math.floor((miliseconds - years * 31556926000 - monthes * 2592000000 - days * 86400000 - hours * 3600000 - minutes * 60000) / 1000);
+    deleteOutput("container");
+    insertOutputTrue(`${years}:${monthes}:${days}:${hours}:${minutes}:${finishSeconds}`);
+}
+
 /**
  * Tenth task
  */
 function differenceBetweenTimes(hours_1, minutes_1, seconds_1, hours_2, minutes_2, seconds_2) {
     let firstTime = toSeconds(hours_1, minutes_1, seconds_1);
     let secondTime = toSeconds(hours_2, minutes_2, seconds_2);
-    let difference = firstTime - secondTime;
-    if(difference < 0) {
-        deleteOutput("container");
-        return insertOutputFalse(`First number must be bigger than second`);
-    }
-    return toHours(difference);
+       // if(difference < 0) {
+    //     deleteOutput("container");
+    //     return insertOutputFalse(`First number must be bigger than second`);
+    // }
+    let usersDate_1 = document.getElementById("usersDate_1").value;
+    let usersDateNumb_1 = new Date(usersDate_1).getTime();
+    let usersDate_2 = document.getElementById("usersDate_2").value;
+    let usersDateNumb_2 = new Date(usersDate_2).getTime();
+    let difference = (firstTime - secondTime) * 1000 + usersDateNumb_1 - usersDateNumb_2;
+    alert(difference);
+    return toYears(difference);
 }
 
 
