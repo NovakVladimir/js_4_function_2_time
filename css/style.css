@@ -1,6 +1,6 @@
 body {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
     width: 98vw;
     height: 98vh;
     margin: 0 auto;
