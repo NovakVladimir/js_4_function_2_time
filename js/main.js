@@ -92,6 +92,7 @@ function toSeconds(hours, minutes, seconds) {
     deleteOutput("container");
     let result = hours * 60 * 60 + minutes * 60 + seconds;
     insertOutputTrue(`It is ${result} seconds`);
+    return result;
 }
 
 /**
@@ -112,6 +113,20 @@ function toHours(seconds) {
     let finishSeconds = seconds - hours * 3600 - minutes * 60;
     deleteOutput("container");
     insertOutputTrue(`${changeFormatOfTime_00(hours)}:${changeFormatOfTime_00(minutes)}:${changeFormatOfTime_00(finishSeconds)}`);
+}
+
+/**
+ * Tenth task
+ */
+function differenceBetweenTimes(hours_1, minutes_1, seconds_1, hours_2, minutes_2, seconds_2) {
+    let firstTime = toSeconds(hours_1, minutes_1, seconds_1);
+    let secondTime = toSeconds(hours_2, minutes_2, seconds_2);
+    let difference = firstTime - secondTime;
+    if(difference < 0) {
+        deleteOutput("container");
+        return insertOutputFalse(`First number must be bigger than second`);
+    }
+    return toHours(difference);
 }
 
 
